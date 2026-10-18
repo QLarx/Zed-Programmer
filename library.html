@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="Библиотека готовых скриптов Zed Programmer. Ищи, изучай и копируй примеры кода.">
+  <title>Библиотека кода</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="data/scripts.js" defer></script>
+  <script src="js/library.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Zed Programmer — главная"><span class="brand-mark">Z<span>.</span></span><span class="brand-name">PROGRAMMER</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню" aria-expanded="false">☰</button>
+      <nav class="nav" id="mainNav"><a href="index.html">Главная</a><a class="active" href="library.html">Библиотека</a><a href="index.html#features">Возможности</a><a href="index.html#about">О проекте</a></nav>
+      <a class="nav-cta" href="index.html">На главную <span>↗</span></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="library-hero">
+      <div class="container">
+        <div class="eyebrow"><span class="pulse-dot"></span> КОЛЛЕКЦИЯ РАЗРАБОТЧИКА</div>
+        <h1>Библиотека <span>скриптов.</span></h1>
+        <p>Ищи готовые решения, разбирайся в коде и забирай полезное в свой проект.</p>
+        <div class="library-search">
+          <span class="search-icon">⌕</span>
+          <input id="searchInput" type="search" placeholder="Поиск по названию, языку или описанию..." autocomplete="off" aria-label="Поиск скриптов">
+          <kbd>⌘ K</kbd>
+        </div>
+        <div class="library-meta"><span id="resultCount">Загружаем скрипты…</span><span class="meta-separator">•</span><span>Код можно копировать одним нажатием</span></div>
+      </div>
+    </section>
+
+    <section class="library-section">
+      <div class="container library-layout">
+        <aside class="filters">
+          <div class="filter-heading"><span>Категории</span><button id="clearFilters" class="clear-button">Сбросить</button></div>
+          <div id="categoryFilters" class="category-list"></div>
+          <div class="filter-note"><span class="filter-note-icon">✦</span><strong>Совет</strong><p>Используй поиск вместе с фильтром категории, чтобы быстрее найти нужный пример.</p></div>
+        </aside>
+        <div class="library-results">
+          <div class="results-toolbar"><div><span class="eyebrow">ВЕСЬ МАТЕРИАЛ</span><h2>Найди свой следующий <span>инструмент.</span></h2></div>
+            <label class="sort-wrap">Сортировка <select id="sortSelect" aria-label="Сортировка"><option value="featured">Рекомендуемые</option><option value="title">По названию</option><option value="language">По языку</option></select></label>
+          </div>
+          <div id="scriptsGrid" class="scripts-grid"></div>
+          <div id="emptyState" class="empty-state" hidden><div class="empty-icon">⌕</div><h3>Ничего не найдено</h3><p>Попробуй изменить запрос или выбрать другую категорию.</p><button class="button button-ghost" id="resetEmpty">Сбросить фильтры</button></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-inner"><a class="brand" href="index.html"><span class="brand-mark">Z<span>.</span></span><span class="brand-name">PROGRAMMER</span></a><p>Создавай. Изучай. Улучшай.</p><span>© <span id="year"></span> Z Programmer</span></div></footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

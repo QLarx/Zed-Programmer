@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="Z Programmer — библиотека скриптов, инструменты и заметки для разработчиков.">
+  <title>Zed Programmer</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="data/scripts.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Z Programmer — главная">
+        <span class="brand-mark">Z<span>.</span></span><span class="brand-name">PROGRAMMER</span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню" aria-expanded="false">☰</button>
+      <nav class="nav" id="mainNav">
+        <a class="active" href="index.html">Главная</a>
+        <a href="library.html">Библиотека</a>
+        <a href="#features">Возможности</a>
+        <a href="#about">О проекте</a>
+      </nav>
+      <a class="nav-cta" href="library.html">Открыть библиотеку <span>↗</span></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-glow glow-one"></div><div class="hero-glow glow-two"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="pulse-dot"></span> ТВОЯ БАЗА ЗНАНИЙ ПО КОДУ</div>
+          <h1>Пиши меньше.<br><span>Создавай больше.</span></h1>
+          <p class="hero-lead">Полезные скрипты, готовые решения и инструменты для тех, кто превращает идеи в работающий код.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="library.html">Исследовать скрипты <span>→</span></a>
+            <a class="button button-ghost" href="#features">Что внутри</a>
+          </div>
+          <div class="hero-stats">
+            <div><strong id="scriptCount">00</strong><span>примеров кода</span></div>
+            <div><strong>06</strong><span>языков и тем</span></div>
+            <div><strong>∞</strong><span>идей для проектов</span></div>
+          </div>
+        </div>
+        <div class="code-window" aria-label="Пример кода JavaScript">
+          <div class="window-top"><div class="window-dots"><i></i><i></i><i></i></div><span>hello-world.js</span><span class="window-lang">JS</span></div>
+          <div class="code-content">
+            <div><span class="ln">1</span><code><span class="token-purple">const</span> <span class="token-blue">future</span> = <span class="token-green">"yours"</span>;</code></div>
+            <div><span class="ln">2</span><code><span class="token-purple">function</span> <span class="token-yellow">buildSomething</span>() {</code></div>
+            <div><span class="ln">3</span><code>&nbsp;&nbsp;<span class="token-purple">return</span> <span class="token-green">"great"</span>;</code></div>
+            <div><span class="ln">4</span><code>}</code></div>
+            <div><span class="ln">5</span><code></code></div>
+            <div><span class="ln">6</span><code><span class="token-blue">console</span>.log(buildSomething());<span class="cursor"></span></code></div>
+          </div>
+          <div class="window-footer"><span><span class="status-dot"></span> Ready to run</span><span>UTF-8&nbsp; · &nbsp;LF</span></div>
+          <div class="floating-chip"><span>✦</span> Чистый код — ясные идеи</div>
+        </div>
+      </div>
+      <div class="hero-bottom-line"></div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-heading">
+          <div><div class="eyebrow">ПОЧЕМУ Z PROGRAMMER</div><h2>Всё нужное — <span>под рукой.</span></h2></div>
+          <p>Не нужно каждый раз начинать с нуля. Находи основу, изучай и адаптируй под свою задачу.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card"><div class="feature-icon icon-purple">⌘</div><h3>Готовые скрипты</h3><p>Полезные примеры кода с понятными описаниями и подсказками по использованию.</p><a href="library.html">Смотреть библиотеку <span>→</span></a></article>
+          <article class="feature-card"><div class="feature-icon icon-blue">⌕</div><h3>Быстрый поиск</h3><p>Фильтруй материалы по названию, языку, категории или ключевым словам.</p><a href="library.html">Найти решение <span>→</span></a></article>
+          <article class="feature-card"><div class="feature-icon icon-green">⧉</div><h3>Копируй и используй</h3><p>Копирование кода одним нажатием — без лишних шагов и отвлекающих элементов.</p><a href="library.html">Попробовать <span>→</span></a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-muted">
+      <div class="container">
+        <div class="section-heading">
+          <div><div class="eyebrow">НАЧНИ С ЭТОГО</div><h2>Популярные <span>примеры.</span></h2></div>
+          <a class="text-link" href="library.html">Вся библиотека <span>→</span></a>
+        </div>
+        <div class="preview-grid" id="featuredScripts"></div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container callout">
+        <div class="callout-orb">Z<span>.</span></div>
+        <div><div class="eyebrow">ТВОЙ ПРОЕКТ. ТВОИ ПРАВИЛА.</div><h2>Создан для обучения<br>и реальной практики.</h2><p>Добавляй свои примеры, расширяй категории и постепенно превращай сайт в собственную базу знаний.</p></div>
+        <a class="button button-primary" href="library.html">Начать изучать <span>→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-inner"><a class="brand" href="index.html"><span class="brand-mark">Z<span>.</span></span><span class="brand-name">PROGRAMMER</span></a><p>Создавай. Изучай. Улучшай.</p><span>© <span id="year"></span> Z Programmer</span></div></footer>
+</body>
+</html>

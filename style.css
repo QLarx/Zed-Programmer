@@ -1,0 +1,156 @@
+/* Z Programmer: главные цвета проекта собраны в переменных для быстрой настройки. */
+:root {
+  color-scheme: dark; /* Сообщает браузеру, что интерфейс по умолчанию тёмный. */
+  --bg: #07111f; /* Основной фон страницы. */
+  --panel: #0b1929; /* Фон карточек и панелей. */
+  --panel-soft: #0e2034; /* Более светлый фон вложенных элементов. */
+  --border: #1d3855; /* Цвет границ. */
+  --text: #edf5ff; /* Основной цвет текста. */
+  --muted: #9bb0c9; /* Второстепенный текст. */
+  --blue: #168bff; /* Главный акцентный синий. */
+  --blue-bright: #45b0ff; /* Светлый синий для свечения и выделения. */
+  --green: #67e8b1; /* Цвет примеров кода. */
+  --shadow: 0 18px 60px #0005; /* Мягкая тень карточек. */
+}
+* { box-sizing: border-box; } /* Учитываем padding и border внутри ширины элементов. */
+html { scroll-behavior: smooth; scroll-padding-top: 90px; } /* Плавная прокрутка к разделам. */
+body {
+  margin: 0; /* Убираем стандартные поля браузера. */
+  background: radial-gradient(ellipse at 70% 0%, #0b2542 0, var(--bg) 48%); /* Глубокий технологичный фон. */
+  color: var(--text); /* Применяем основной цвет текста. */
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; /* Современный системный шрифт. */
+  line-height: 1.6; /* Улучшаем читаемость текста. */
+}
+a { color: inherit; text-decoration: none; } /* Ссылки наследуют цвет и не имеют подчёркивания по умолчанию. */
+button, input { font: inherit; } /* Элементы управления используют тот же шрифт. */
+button { cursor: pointer; } /* Показываем, что кнопки нажимаются. */
+button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid var(--blue-bright); outline-offset: 3px; } /* Видимый фокус для клавиатурной навигации. */
+::selection { background: #168bff55; } /* Цвет выделенного текста. */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; } /* Скрываем подпись визуально, но оставляем её для скринридеров. */
+.section-wrap, .site-header { width: min(1180px, calc(100% - 40px)); margin-inline: auto; } /* Общая ширина контента и центрирование. */
+.site-header {
+  min-height: 76px; display: flex; align-items: center; gap: 25px; /* Выстраиваем логотип, меню и поиск в ряд. */
+  border-bottom: 1px solid #29445d; position: sticky; top: 0; z-index: 20; /* Закрепляем меню сверху. */
+  background: #07111feF; backdrop-filter: blur(16px); /* Полупрозрачный фон шапки. */
+}
+.brand { display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; font-weight: 800; letter-spacing: -.03em; } /* Стиль бренда. */
+.brand-mark { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 11px; background: linear-gradient(135deg, #62c5ff, #0875f5 60%, #173b83); color: white; font-size: 25px; font-weight: 900; font-style: italic; box-shadow: 0 0 25px #168bff35; } /* Фирменный знак Z. */
+.main-nav { display: flex; align-items: center; gap: 19px; margin-inline: auto; } /* Горизонтальное главное меню. */
+.nav-link { color: var(--muted); font-size: 13px; transition: color .2s; white-space: nowrap; } /* Обычная ссылка меню. */
+.nav-link:hover, .nav-link.active { color: var(--blue-bright); } /* Подсветка выбранной ссылки. */
+.header-search { width: 190px; display: flex; align-items: center; gap: 8px; padding: 7px 10px; border: 1px solid var(--border); border-radius: 12px; background: #081626; color: var(--muted); } /* Контейнер поиска. */
+.header-search input { width: 100%; min-width: 0; border: 0; outline: 0; color: var(--text); background: transparent; font-size: 12px; } /* Поле поиска без внутренней рамки. */
+.header-search input::placeholder { color: #7187a0; } /* Цвет подсказки в поиске. */
+.icon-button, .menu-toggle { border: 1px solid var(--border); color: var(--text); background: var(--panel); border-radius: 10px; width: 38px; height: 38px; } /* Квадратные кнопки в шапке. */
+.menu-toggle { display: none; } /* Мобильная кнопка скрыта на широких экранах. */
+.hero { min-height: 455px; display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 25px; padding-block: 55px 45px; overflow: hidden; } /* Две колонки главного экрана. */
+.hero-copy { position: relative; z-index: 2; } /* Текст находится поверх декоративной графики. */
+.eyebrow { color: var(--blue-bright); font-size: 11px; font-weight: 800; letter-spacing: .16em; margin: 0 0 12px; } /* Маленькая подпись раздела. */
+h1, h2, h3, p { margin-top: 0; } /* Убираем верхние стандартные отступы. */
+h1 { max-width: 680px; margin-bottom: 18px; font-size: clamp(32px, 4vw, 51px); line-height: 1.12; letter-spacing: -.045em; } /* Большой адаптивный заголовок. */
+h1 span { color: var(--blue-bright); } /* Синее выделение ключевого слова. */
+.hero-description { max-width: 590px; color: var(--muted); font-size: 15px; } /* Поясняющий текст героя. */
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 27px; } /* Расположение главных кнопок. */
+.button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; border: 1px solid transparent; border-radius: 10px; padding: 11px 17px; font-weight: 700; font-size: 13px; transition: transform .2s, box-shadow .2s, background .2s; } /* Базовый вид кнопок. */
+.button:hover { transform: translateY(-2px); } /* Лёгкий подъём при наведении. */
+.button-primary { background: linear-gradient(135deg, #168bff, #0867d5); color: white; box-shadow: 0 8px 25px #0875f533; } /* Основная синяя кнопка. */
+.button-primary:hover { box-shadow: 0 10px 30px #0875f566; } /* Усиление свечения кнопки. */
+.button-secondary { border-color: #31516f; background: #081626; } /* Второстепенная кнопка. */
+.hero-stats { display: flex; flex-wrap: wrap; gap: 26px; margin-top: 38px; } /* Три мини-показателя под кнопками. */
+.hero-stats div { display: grid; gap: 1px; } /* Число и подпись располагаются вертикально. */
+.hero-stats strong { color: var(--blue-bright); font-size: 16px; } /* Акцент на номере. */
+.hero-stats span { color: var(--muted); font-size: 11px; } /* Подпись показателя. */
+.hero-art { min-height: 340px; display: grid; place-items: center; position: relative; isolation: isolate; } /* Область декоративного редактора. */
+.hero-glow { position: absolute; width: 75%; height: 55%; bottom: 5%; background: #0875f533; filter: blur(55px); z-index: -1; } /* Размытое синее свечение. */
+.orbit { position: absolute; border: 1px solid #168bff3d; transform: rotate(-24deg); border-radius: 22px; } /* Декоративные контуры вокруг редактора. */
+.orbit-one { width: 90%; height: 70%; } .orbit-two { width: 75%; height: 90%; transform: rotate(28deg); } /* Размеры и углы двух контуров. */
+.editor-window { width: min(440px, 90%); min-height: 250px; position: relative; z-index: 1; border: 1px solid #2d72ad; border-radius: 14px; overflow: hidden; background: linear-gradient(145deg, #0b2038, #06101d); box-shadow: 0 22px 70px #0009, 0 0 35px #168bff25; transform: perspective(900px) rotateY(-7deg) rotateX(3deg); } /* Наклонённая карточка редактора. */
+.editor-top { height: 39px; display: flex; align-items: center; gap: 6px; padding: 0 13px; border-bottom: 1px solid #23405e; color: #7e9bb9; font-size: 11px; } /* Верхняя панель редактора. */
+.editor-top i { width: 7px; height: 7px; border-radius: 50%; background: #ff647c; } .editor-top i:nth-child(2) { background: #ffcc66; } .editor-top i:nth-child(3) { background: #5ee6a8; } /* Три круглых индикатора окна. */
+.editor-top span { margin-left: 10px; } /* Отступ названия файла. */
+.editor-content { padding: 19px 20px; font: 12px/1.9 ui-monospace, SFMono-Regular, Consolas, monospace; color: #d7eaff; position: relative; } /* Моноширинный текст кода. */
+.editor-content p { margin: 0; white-space: nowrap; } .editor-content b { display: inline-block; width: 25px; color: #5b7898; font-weight: 400; } /* Номера строк и отступы. */
+.code-purple { color: #c49aff; } .code-green { color: #79e6b2; } .code-orange { color: #ffcb78; } /* Подсветка синтаксиса. */
+.code-symbol { position: absolute; right: 20px; bottom: 17px; display: grid; place-items: center; width: 82px; height: 64px; color: var(--blue-bright); font-size: 28px; font-weight: 800; border: 1px solid #168bff55; border-radius: 12px; background: #0b2340cc; box-shadow: 0 0 35px #168bff20; } /* Большой символ кода. */
+.floating-tag { position: absolute; z-index: 3; display: flex; align-items: center; gap: 8px; padding: 9px 12px; border: 1px solid #28527b; border-radius: 12px; background: #081a2beF; box-shadow: var(--shadow); font-size: 12px; font-weight: 700; } /* Плавающие ярлыки языков. */
+.tag-python { top: 18px; left: 0; } .tag-js { top: 60px; right: 0; } .tag-php { bottom: 35px; left: 5px; } /* Положение ярлыков. */
+.language-icon { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 8px; font-size: 11px; font-weight: 900; flex-shrink: 0; } /* Универсальный значок языка. */
+.python-icon { color: #ffe17d; background: linear-gradient(135deg, #1b77b7 50%, #f2c94c 50%); } .js-icon { color: #111b2b; background: #f7df48; border-radius: 5px; } .php-icon { color: #e6e9ff; background: #5b6d9b; font-style: italic; } .bash-icon { color: #b9e2ff; background: #172b40; border: 1px solid #42617e; } /* Цвета и форма значков языков. */
+.features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding-block: 28px; border-block: 1px solid #1a3149; } /* Четыре преимущества в ряд. */
+.feature-item { display: flex; align-items: flex-start; gap: 13px; } /* Значок рядом с текстом преимущества. */
+.feature-icon, .panel-icon { display: grid; place-items: center; width: 43px; height: 43px; flex-shrink: 0; border: 1px solid #245580; border-radius: 12px; background: #0b2540; color: var(--blue-bright); font-size: 22px; } /* Иконки преимуществ и панелей. */
+.feature-item h2 { font-size: 13px; margin: 1px 0 5px; } .feature-item p { color: var(--muted); font-size: 11px; line-height: 1.5; margin: 0; } /* Типографика блока преимуществ. */
+.content-section { padding-block: 52px 42px; } /* Отступы секции скриптов. */
+.section-heading { display: flex; justify-content: space-between; align-items: end; gap: 20px; } /* Заголовок и ссылка располагаются по краям. */
+.section-heading h2, .info-panel h2 { font-size: clamp(24px, 3vw, 31px); line-height: 1.2; letter-spacing: -.03em; margin-bottom: 8px; } /* Заголовки секций. */
+.section-subtitle { color: var(--muted); font-size: 13px; margin-bottom: 0; } /* Подпись под заголовком. */
+.text-link { display: inline-flex; align-items: center; gap: 8px; color: var(--blue-bright); font-size: 12px; font-weight: 700; white-space: nowrap; } /* Ссылки синим цветом. */
+.text-link:hover { color: #9bd7ff; } /* Состояние ссылки при наведении. */
+.filter-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 25px 0 17px; } /* Ряд фильтров. */
+.filter-chip { border: 1px solid var(--border); border-radius: 999px; padding: 7px 14px; color: var(--muted); background: #091727; font-size: 12px; } /* Кнопка-фильтр. */
+.filter-chip:hover, .filter-chip.selected { border-color: #168bff88; color: white; background: #0b3156; } /* Выбранный фильтр. */
+.script-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 15px; } /* Сетка карточек скриптов. */
+.script-card { display: flex; flex-direction: column; min-height: 280px; padding: 18px; border: 1px solid var(--border); border-radius: 14px; background: linear-gradient(155deg, #0c1c2e, #081421); box-shadow: 0 8px 30px #0002; transition: border-color .2s, transform .2s; } /* Внешний вид карточки. */
+.script-card:hover { border-color: #2875b7; transform: translateY(-3px); } /* Подсветка карточки при наведении. */
+.card-top { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; } /* Верхняя строка карточки. */
+.card-language { font-size: 12px; font-weight: 700; } .card-version { margin-left: auto; color: #6e8ba9; font: 11px ui-monospace, monospace; } /* Название языка и расширение файла. */
+.script-card h3 { font-size: 16px; line-height: 1.35; margin-bottom: 8px; } .script-card p { color: var(--muted); font-size: 12px; margin-bottom: 17px; } /* Заголовок и описание скрипта. */
+.tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; margin-bottom: 17px; } .tag-row span { padding: 3px 8px; border-radius: 999px; background: #142a42; color: #b4cbe3; font-size: 10px; } /* Теги карточки. */
+.card-bottom { display: flex; align-items: center; justify-content: space-between; gap: 8px; border-top: 1px solid #1b3047; padding-top: 13px; } .meta { color: #8ea6c0; font-size: 10px; } /* Нижняя строка карточки. */
+.button-small { padding: 8px 10px; background: #0878e8; color: white; border-radius: 8px; font-size: 10px; } /* Компактная кнопка копирования. */
+.notice { margin: 17px 0 0; color: #7892ad; font-size: 11px; } /* Предупреждение под библиотекой. */
+.empty-state { color: var(--muted); padding: 25px; text-align: center; border: 1px dashed var(--border); border-radius: 12px; } /* Сообщение, если результатов нет. */
+.split-sections { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding-bottom: 55px; } /* Три информационные панели. */
+.info-panel { padding: 23px; border: 1px solid var(--border); border-radius: 15px; background: linear-gradient(145deg, #0d2034, #081522); } /* Карточка информационного раздела. */
+.panel-icon { margin-bottom: 22px; } .info-panel h2 { font-size: 21px; } .info-panel p:not(.eyebrow) { min-height: 65px; color: var(--muted); font-size: 13px; } /* Текст информационных карточек. */
+.site-footer { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 12px 25px; padding-block: 28px 35px; border-top: 1px solid #1a3149; } /* Подвал сайта. */
+.site-footer > p { margin: 0; color: var(--muted); font-size: 12px; } .footer-links { display: flex; gap: 17px; color: var(--muted); font-size: 12px; } .footer-links a:hover { color: var(--blue-bright); } /* Ссылки в подвале. */
+.site-footer small { color: #7188a1; font-size: 11px; } /* Авторская строка. */
+.toast { position: fixed; z-index: 50; right: 22px; bottom: 22px; max-width: min(360px, calc(100% - 44px)); padding: 12px 16px; border: 1px solid #2c6597; border-radius: 12px; background: #0b2540; color: white; box-shadow: var(--shadow); opacity: 0; transform: translateY(12px); pointer-events: none; transition: .2s; font-size: 13px; } /* Всплывающее сообщение. */
+.toast.show { opacity: 1; transform: translateY(0); } /* Показываем всплывающее сообщение. */
+
+/* Светлая тема включается JavaScript-классом на body. */
+body.light-theme { --bg: #edf4fb; --panel: #fff; --panel-soft: #e6f0fa; --border: #c6d8e9; --text: #13263b; --muted: #526a83; --blue: #0875e1; --blue-bright: #0875e1; --green: #087d58; background: #edf4fb; }
+body.light-theme .site-header { background: #edf4fbed; border-color: var(--border); }
+body.light-theme .header-search, body.light-theme .button-secondary, body.light-theme .filter-chip { background: white; color: var(--text); }
+body.light-theme .script-card, body.light-theme .info-panel { background: white; }
+body.light-theme .editor-window { background: #102238; color: white; }
+body.light-theme .tag-row span { background: #e8f1fa; color: #294661; }
+
+/* Планшеты: карточек меньше, меню компактнее. */
+@media (max-width: 1000px) {
+  .site-header { gap: 14px; }
+  .main-nav { gap: 11px; }
+  .nav-link { font-size: 12px; }
+  .header-search { width: 150px; }
+  .script-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .features { grid-template-columns: repeat(2, 1fr); }
+  .hero { grid-template-columns: 1fr 0.8fr; }
+}
+/* Телефоны: меню превращается в раскрывающийся список, блоки становятся одной колонкой. */
+@media (max-width: 700px) {
+  .section-wrap, .site-header { width: min(100% - 28px, 560px); }
+  .site-header { min-height: 68px; flex-wrap: wrap; gap: 10px; padding-block: 10px; }
+  .brand { margin-right: auto; }
+  .menu-toggle { display: inline-grid; place-items: center; }
+  .main-nav { display: none; order: 5; width: 100%; flex-direction: column; align-items: stretch; gap: 0; padding: 6px 0; }
+  .main-nav.open { display: flex; }
+  .nav-link { padding: 10px 4px; border-top: 1px solid #1a3149; font-size: 14px; }
+  .header-search { order: 4; width: 100%; }
+  .icon-button { width: 38px; }
+  .hero { grid-template-columns: 1fr; padding-block: 42px 25px; }
+  .hero-art { min-height: 280px; }
+  .hero-stats { gap: 18px; }
+  .features { gap: 20px 12px; }
+  .feature-item { gap: 9px; }
+  .feature-icon { width: 37px; height: 37px; }
+  .section-heading { align-items: flex-start; flex-direction: column; }
+  .script-grid, .split-sections { grid-template-columns: 1fr; }
+  .script-card { min-height: 250px; }
+  .info-panel p:not(.eyebrow) { min-height: 0; }
+  .site-footer { grid-template-columns: 1fr; }
+  .footer-links { flex-wrap: wrap; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
